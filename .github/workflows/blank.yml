@@ -1,0 +1,14 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Github Action for curl
+      uses: wei/curl@v1.1.1
+      with:
+        args: -X POST ${{ secrets.WEBHOOKURL }}?tag=latest-${GITHUB_SHA::8}
